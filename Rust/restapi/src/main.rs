@@ -1,6 +1,8 @@
 extern crate serde;
-extern crate serde_json;
 extern crate rustc_serialize;
+extern crate jwt;
+extern crate hyper;
+extern crate crypto;
 
 #[macro_use]
 extern crate nickel;
@@ -8,13 +10,25 @@ extern crate nickel;
 #[macro_use]
 extern crate serde_derive;
 
+#[macro_use]
+extern crate serde_json;
+
 #[macro_use(bson, doc)]
 extern crate bson;
 extern crate mongodb;
 
 // Nickel
 use nickel::{Nickel, JsonBody, HttpRouter, Request, Response, MiddlewareResult, MediaType};
-use nickel::status::StatusCode::{self};
+use nickel::status::StatusCode::{self, Forbidden};
+
+// hyper
+use hyper::header;
+use hyper::header::{Authorization, Bearer};
+
+//jwt
+use std::default::Default;
+use crypto::sha2::Sha256;
+use jwt::{Header, Registerd, Token};
 
 // Mongodb
 use mongodb::{Client, ThreadedClient};
@@ -102,13 +116,30 @@ fn main() {
             "lastname" => lastname,
             "email" => email
         }, None) {
-            Ok(_) => (StatusCode::Ok, "Item Saved"),
+            Ok(_) => (StatusCode::Ok, "Item Saved!"),
             Err(e) => return response.send(format!("{}", e))
         }
     });
     
     router.delete("/users/:id", middleware! { |request, response|
-        format!("Hello from delete /users/:id")
+        // connect to database
+        let client = Client::connect("localhost", 27017)
+            .ok().expect("Error etablishing connection");
+        
+        let collection = client.db("rust").collection("users");
+        // get object id from request params
+        let user_id = request.param("id").unwrap();
+        // convert userId string to ObjectId
+        let id = match ObjectId::with_string(user_id) {
+            Ok(objectId) => objectId,
+            Err(e) => return response.send(format!("{}", e))
+        };
+
+        // start delete
+        match collection.delete_one(doc! { "_id" => id }, None) {
+            Ok(_) => (StatusCode::Ok, "Item deleted"),
+            Err(e) => return response.send(format!("{}", e))
+        }
     });
 
     // create and listen server
