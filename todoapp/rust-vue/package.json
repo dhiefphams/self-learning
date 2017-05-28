@@ -20,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/dhiefphams/self-learning/issues"
   },
-  "homepage": "https://github.com/dhiefphams/self-learning#readme"
+  "homepage": "https://github.com/dhiefphams/self-learning#readme",
+  "devDependencies": {
+    "@types/vue": "^2.0.0",
+    "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "typescript": "^2.3.3",
+    "vue": "^2.3.3"
+  }
 }
