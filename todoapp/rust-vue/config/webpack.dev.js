@@ -1,3 +1,4 @@
+const path = require('path');
 const webpackMerge = require('webpack-merge');
 
 const commonConfig = require('./webpack.common');
@@ -5,17 +6,15 @@ const commonConfig = require('./webpack.common');
 module.exports = () => {
   return webpackMerge(commonConfig({ isProd: false }), {
     output: {
-      path: path.resolve(__dirname, './dist'),
+      path: path.resolve('./dist'),
       publicPath: '/dist/',
       filename: '[name].js'
     },
     devServer: {
-      historyApiFallback: true,
-      noInfo: true
+      historyApiFallback: {
+        index: '/dist/'
+      }
     },
-    performance: {
-      hints: false
-    },
-    devtool: '#eval-source-map'
+    devtool: 'cheap-eval-source-map'
   });
 }

@@ -1,5 +1,8 @@
-const path = require('path');
 const webpack = require('webpack');
+
+// plugins
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 /**
  * @param {{isProd: boolean}} options
@@ -7,8 +10,8 @@ const webpack = require('webpack');
 module.exports = (options) => {
   return {
     entry: {
-      'main': './src/app',
-      'vendor': './src/vendor'
+      'main': './client/app',
+      'vendor': './client/vendor'
     },
     module: {
       rules: [
@@ -27,12 +30,26 @@ module.exports = (options) => {
           }
         },
         {
-          test: /\.tsx?$/,
-          loader: 'ts-loader',
+          test: /\.ts?$/,
+          loader: 'awesome-typescript-loader',
           exclude: /node_modules/,
           options: {
             appendTsSuffixTo: [/\.vue$/],
           }
+        },
+        {
+          test: /\.css$/,
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: 'css-loader'
+          })
+        },
+        {
+          test: /\.scss$/,
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: 'css-loader!scss-loader'
+          })
         },
         {
           test: /\.(png|jpg|gif|svg)$/,
@@ -40,6 +57,11 @@ module.exports = (options) => {
           options: {
             name: '[name].[ext]?[hash]'
           }
+        },
+        {
+          test: /\.html$/,
+          use: 'raw-loader',
+          exclude: [ 'client/index.html' ]
         }
       ]
     },
@@ -48,6 +70,11 @@ module.exports = (options) => {
       alias: {
         'vue$': 'vue/dist/vue.esm.js'
       }
-    }
+    },
+    plugins: [
+      new HTMLWebpackPlugin({
+        template: './client/index.html'
+      })
+    ]
   }
 }
