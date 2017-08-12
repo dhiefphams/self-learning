@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package routeguide;
+
+service RouteGuide {
+	// simple rpc
+	rpc GetFeature(Point) returns (Feature) {}
+	// serve -> client stream
+	rpc ListFeatures(Rectangle) returns (stream Feature) {}
+	// client -> server stream
+	rpc RecordRoute(stream Point) returns (RouteSummary) {}
+	// A Bidiretional streaming RPC
+	rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+}
+
+// Points are represented as latitide-longitude paris in the E7 representation
+message Point {
+	int32 latitude = 1;
+	int32 longitude = 2;
+}
+
+// A latitude-longitude rectangle, represented as tow diagonally opposite
+message Rectangle {
+	// one corner
+	Point lo = 1;
+	// other corner
+	Point hi = 2;
+}
+
+// A feature names something at a given input
+message Feature {
+	string name = 1;
+	Point location = 2;
+}
+
+// A RouteNote is a message sent while at a given point
+message RouteNote {
+	Point location = 1;
+	string message = 2;
+}
+
+// A RouteSummary is ceceived in response to a RecordRoute rpc
+message RouteSummary {
+	// the number of points received
+	int32 point_count = 1;
+	// the number of known features passed while traversing the route
+	int32 feature_count = 2;
+	// the distance covered in metres
+	int32 distance = 3;
+	// the duration of the traversal in seconds
+	int32 elapsed_time = 4;
+}
