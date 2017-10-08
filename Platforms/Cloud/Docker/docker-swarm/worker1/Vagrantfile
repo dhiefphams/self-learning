@@ -1,0 +1,21 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/trusty64"
+
+  # Required for NFS to work, pick any local IP
+  config.vm.network :private_network, ip: '192.168.50.3'
+  # Use NFS for shared folders for better performance
+  config.vm.synced_folder '.', '/src', nfs: true
+  # auto install docker-ce
+  config.vm.provision "shell", path: "startup.sh"
+  # hostname
+  config.vm.hostname = "Worker1"
+  # config.vm.provider "virtualbox" do |vb|
+  #   # 1/4 total memory of host machine
+  #   vb.memory = 512
+  #   # If you have more than 2 cpus, using 1/2 of this.
+  #   vb.cpus = 2
+  # end
+end
