@@ -1,0 +1,4 @@
+functionGenerics()
+
+// enum generic
+enumGenerics()
