@@ -11,7 +11,25 @@
 - Boolean: `Bool`
 - String: `Character` (`"A"`)
 
+**Notes**
+
+- No boolean implicit
+
+```swift
+let i = 1
+if i {
+    // wonlt compile
+}
+// use like this
+if i == 1 {
+    // dosth
+}
+```
+
 **Type casting** `DType(value)`
+
+- Between interger: raised error when results in a overflow
+- Floatint point -> Integer: Truncated
 
 ### String
 
@@ -66,6 +84,12 @@ var arr_2 = Array(repeatElement(0, count: 10))
 var arr_3 = arr_2 + q_arr
 ```
 
+Range operators:
+
+- Closed: [a...b] include both a and b
+- Haft: [a..<b]: Exclude b, we can delete a if a == 0
+- One side: [...a], [b...]
+
 ### Dict
 
 ```swift
@@ -102,20 +126,59 @@ t.height
 t.width
 ```
 
+**Deconstruct the tuples**
+
+```swift
+let (height, width) = t
+// or just one part
+let (height, _) = t
+```
+
 ### Optinal values
 
 ```swift
-var q: String?
+var q: String? // q automatic set to `nil`
 q = "aaa"
 if q != nil { // hola, like go
     let anotherQ = q
     // do sth
 }
 
-// better way
+// using binding
 if let anotherQ = q {
     // do sth
 }
+// str -> int
+if let age = Int(ageStr) {
+    // success conversion
+} else {
+    // failed conversion
+}
+```
+
+Using binding to check condition
+
+```swift
+if let firstNum = Int("4"), let secondNum = Int("42"), firstNum < secondNum && secondNum < 100 {
+    // do something
+} else {
+    // just false validate
+}
+```
+
+Implicit unwrappeed optionals
+
+```swift
+// force get the value of optional value
+// raise if the value is `nil`
+let possibleStr: String? = "aaa"
+let forcedStr: String = possibleStr! // ok
+
+var possible: String?
+let forced: String = possible! // raised error
+
+let assumedString: String! = "aaa" // assumedString is an optinal String (String? type)
+let implicitStr: String = assumedString // ok, auto unwrapped
 ```
 
 ### Enum
@@ -459,6 +522,8 @@ q.reduce(0) { ( acc: Int, val: Int) -> Int in acc + val }
 ```swift
 enum DivisionError: Error {
     case DivideByZero
+
+    case tooLarge(Int)
 }
 
 func divide(_ nb1: Double, _ nb2: Double) throws -> Double { // like a mark in java
@@ -473,6 +538,8 @@ do {
     print(q)
 } catch DivisionError.DivideByZero {
     // do sth
+} catch DivisionError.tooLarge(let val) {
+    // do something with val
 }
 ```
 

@@ -18,8 +18,8 @@ let package = Package(
         .target(
             name: "rest",
             dependencies: []),
-        .target(
-            name: "generic",
-            dependencies: []),
+        // .target(
+        //     name: "generic",
+        //     dependencies: []),
     ]
 )

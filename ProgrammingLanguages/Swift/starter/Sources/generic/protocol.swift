@@ -3,10 +3,10 @@
 protocol Storage {
     associatedtype Item
     var items: [Item] { set get }
-    mutating push(item: Item)
+    mutating func push(item: Item)
 
     var size: Int { get }
-    mutating pop() -> Item
+    mutating func pop() -> Item
 
     
     func showCurrentInventory() -> [Item]
@@ -16,11 +16,11 @@ protocol Storage {
 struct RedisStorage: Storage {
     typealias Item = Food
     // implement the methods and props
-    var items: [Food]()
+    var items: [Food]
 }
 
 // using with where clause
 // only apply thoose method on String Item
 extension Storage where Item == String {
-    func thisIsStr()
+    func thisIsStr() {}
 }
