@@ -18,7 +18,7 @@
 ```swift
 let i = 1
 if i {
-    // wonlt compile
+    // won't compile
 }
 // use like this
 if i == 1 {
