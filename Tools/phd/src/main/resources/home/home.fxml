@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+  xmlns:fx="http://javafx.com/fxml"
+  fx:controller="com.hienph.phd.fx.HomeController"
+  prefHeight="400.0" prefWidth="600.0">
+
+  <fx:define>
+    <ToggleGroup fx:id="toggleGroup" />
+  </fx:define>
+
+  <TextField />
+
+  <Label text="Hello" fx:id="firstLabel" />
+  <Label text="${firstLabel.text}" />
+
+  <RadioButton text="Easy" toggleGroup="$toggleGroup" />
+  <RadioButton text="Medium" toggleGroup="$toggleGroup" />
+  <RadioButton text="Hard" toggleGroup="$toggleGroup" />
+
+  <Button fx:id="submitBtn" onAction="#onSubmit" text="Do touch me" />
+</VBox>
