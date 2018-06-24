@@ -1,0 +1,19 @@
+[package]
+name = "rust-mysql-rest"
+version = "0.1.0"
+authors = ["Hien PH <hienduyph@gmail.com>"]
+
+[dependencies]
+rocket="*"
+rocket_codegen="*"
+serde = "*"
+serde_json = "*"
+serde_derive = "*"
+diesel = { version = "1.3.2", features = ["mysql", "r2d2"] }
+r2d2 = "*"
+r2d2-diesel = "*"
+
+[dependencies.rocket_contrib]
+version = "*"
+default-features = false
+features = ["json"]
