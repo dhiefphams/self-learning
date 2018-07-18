@@ -9,7 +9,10 @@ namespace NetStarter
             Hello.run();
             Collections.HelloListString.run();
             Algorithms.FibonacciGenerator.run();
-            OOP.Bank.run();
+            // OOP.Bank.run();
+            OOP.Inheritence.Shape.run();
+            OOP.Inheritence.BookStore.run();
+            OOP.DI.IOCContainer.run();
         }
     }
 }
