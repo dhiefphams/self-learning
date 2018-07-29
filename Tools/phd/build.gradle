@@ -34,6 +34,9 @@ dependencies {
   compile group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.1.12'
   compile 'io.reactivex.rxjava2:rxjavafx:2.x.y'
 
+  // spring alternative
+  compile group: 'io.netty', name: 'netty-all', version: '4.1.24.Final'
+
   compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
 //  compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
 

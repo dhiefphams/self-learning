@@ -1,0 +1,22 @@
+/** like body */
+.root {
+  -fx-background-color: #000000;
+  -fx-text-fill: #ffffff;
+}
+
+/** Label */
+.label {
+
+}
+
+/** THe button */
+.button {}
+
+.login-btn {
+  -fx-background-color: blue;
+  -fx-text-fill: white;
+}
+
+#login {
+  -fx-text-fill: red;
+}
