@@ -1,0 +1,5 @@
+include blogger/schema.sql
+graft blogger/static
+graft blogger/templates
+global-exclude *.pyc
+
