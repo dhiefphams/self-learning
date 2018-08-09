@@ -1,0 +1,31 @@
+{
+  "name": "notepad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "ts-node -P tsconfig.json src/main.tsx"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "proton-native": "^1.1.9",
+    "react": "^16.4.2"
+  },
+  "devDependencies": {
+    "@types/proton-native": "^1.1.3",
+    "@types/react": "^16.4.8",
+    "@types/webpack": "^4.4.9",
+    "awesome-typescript-loader": "^5.2.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "ts-node": "^7.0.0",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.9.2",
+    "typescript": "^3.0.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
