@@ -1,0 +1,11 @@
+/home/q/Working/self-learning/ProgrammingLanguages/CSharp/khtn-2018/bin/Debug/netcoreapp2.1/khtn-2018.deps.json
+/home/q/Working/self-learning/ProgrammingLanguages/CSharp/khtn-2018/bin/Debug/netcoreapp2.1/khtn-2018.runtimeconfig.json
+/home/q/Working/self-learning/ProgrammingLanguages/CSharp/khtn-2018/bin/Debug/netcoreapp2.1/khtn-2018.runtimeconfig.dev.json
+/home/q/Working/self-learning/ProgrammingLanguages/CSharp/khtn-2018/bin/Debug/netcoreapp2.1/khtn-2018.dll
+/home/q/Working/self-learning/ProgrammingLanguages/CSharp/khtn-2018/bin/Debug/netcoreapp2.1/khtn-2018.pdb
+/home/q/Working/self-learning/ProgrammingLanguages/CSharp/khtn-2018/obj/Debug/netcoreapp2.1/khtn-2018.csprojAssemblyReference.cache
+/home/q/Working/self-learning/ProgrammingLanguages/CSharp/khtn-2018/obj/Debug/netcoreapp2.1/khtn-2018.csproj.CoreCompileInputs.cache
+/home/q/Working/self-learning/ProgrammingLanguages/CSharp/khtn-2018/obj/Debug/netcoreapp2.1/khtn-2018.AssemblyInfoInputs.cache
+/home/q/Working/self-learning/ProgrammingLanguages/CSharp/khtn-2018/obj/Debug/netcoreapp2.1/khtn-2018.AssemblyInfo.cs
+/home/q/Working/self-learning/ProgrammingLanguages/CSharp/khtn-2018/obj/Debug/netcoreapp2.1/khtn-2018.dll
+/home/q/Working/self-learning/ProgrammingLanguages/CSharp/khtn-2018/obj/Debug/netcoreapp2.1/khtn-2018.pdb
